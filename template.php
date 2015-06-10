@@ -1,5 +1,18 @@
 <?php
 /**
+ * Add css files from CDN
+ * drupal_add_css('', array('type' => 'external'));
+ */
+drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css', array('type' => 'external'));
+drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array('type' => 'external'));
+
+/**
+ * Add js files from CDN
+ * drupal_add_js('', 'external');
+ */
+drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js', 'external');
+
+/**
  * @file
  * Contains the theme's functions to manipulate Drupal's default markup.
  *
