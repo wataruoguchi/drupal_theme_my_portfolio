@@ -13,7 +13,8 @@
 @import "normalize";
 
 /* Layout rules */
-@import "layouts/responsive";
+//I don't use this. Instead I use my theme powered by Bootstrap
+//@import "layouts/responsive";
 
 /* Component (SMACSS module) rules */
 @import "components/misc";
