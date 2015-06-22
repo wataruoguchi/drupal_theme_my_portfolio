@@ -1,6 +1,6 @@
 (function($, Drupal, window, document, undefined) {
 	$(document).ready(function() {
-		//register events
+		//register events for the navigation
 		var nav_ul = $('#cd-nav ul');
 		var nav_button = $('#nav-toggle');
 		$(document).click(function() {

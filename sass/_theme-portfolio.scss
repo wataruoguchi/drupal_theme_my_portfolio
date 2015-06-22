@@ -105,6 +105,7 @@ body {
 */
 .box {
 	position: relative;
+	top: 0;
 	width: 100%;
 }
 .golden-ratio:before {
@@ -133,6 +134,56 @@ body {
 	margin-right: -50%;
 	transform: translate(-50%, -50%);
 }
+
+/**
+ * FILL IMAGE AS A BACKGROUND
+*/
+.background-image {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+
+/**
+ * IMAGE WRAPPER
+ * In order to contain a background image which will be zoomed
+ * https://getpocket.com/a/read/652807135
+ * http://jsfiddle.net/s3hWj/4/
+ */
+.image-wrapper {	
+	overflow: hidden;
+}
+
+/*
+ * MOUSEOVER IMAGE FILTER
+ * This should be contained in .image-wrapper
+*/
+.mouseover-image-filter {
+	@include filter(opacity(.2));
+}
+.image-wrapper:hover {
+	.mouseover-image-filter {
+		@include filter(opacity(.5));
+	}
+}
+
+/**
+ * MOUSEOVER IMAGE ZOOM
+ * This should be contained in .image-wrapper
+ */
+.mouseover-image-zoom {
+	@include transition(all 3s);
+	@include transform(scale(1, 1));
+	z-index: -1;
+}
+.image-wrapper:hover {
+	.mouseover-image-zoom {
+		@include transform(scale(1.5, 1.5));
+	}
+}
+
 
 /**
  * BOTTOM CONTAINER
@@ -227,9 +278,7 @@ a {
 		font-size: 8rem;
 	}
 }
-.wk-section>.row:first-child>.col-sm-6:first-child,
-.skl-section>.row:first-child>.col-sm-6:first-child,
-.info-section>.row:first-child>.col-sm-6:first-child {
+.section>.row:first-child>.col-sm-6:first-child {
 	background-color: $ColorGreen;
 }
 .single-page-title, #cboxContent #nav-toggle {
@@ -240,6 +289,18 @@ a {
 	font-family: $RobotoSlab;
 	text-transform: uppercase;
 	color: #fff;
+}
+.just-margin {
+	&:after {
+		content: '';
+		display: block;
+		padding-top: 5%;
+	}
+}
+@media (max-width:799px) {
+	.just-margin {
+		display: none;
+	}
 }
 
 //Home section
@@ -270,13 +331,18 @@ a {
 }
 
 //Work secttion
-.wk-section {}
-.wk-title {}
-.wk-caption {}
-
 //Skill section
-.skl-section {}
-.skl-title {}
+.section {
+	h3.title {
+		font-weight: 900;
+		font-size: 2rem;
+		text-transform: capitalize;
+	}
+	h4.caption {
+		font-size: 1.25rem;
+		margin-top: -1rem;
+	}
+}
 
 //Infomation section
 .info-section>.row:first-child>.col-sm-6:nth-child(2) {
@@ -321,7 +387,7 @@ a {
 			font-size: 2.25rem;
 			background-color: $ColorLink;
 			color: #fff;
-			@include box-shadow(4px 4px 10px #ddd);
+			@include box-shadow(2px 3px 10px #bbb);
 			&:hover, &:focus {
 				background-color: $ColorLinkHover;
 				@include box-shadow(0 0 0 #fff);
@@ -369,13 +435,54 @@ a {
 		margin-top: 1rem;
 		line-height: 5rem;
 	}
-	.wk-section>.row:first-child>.col-sm-6:first-child,
-	.skl-section>.row:first-child>.col-sm-6:first-child,
-	.info-section>.row:first-child>.col-sm-6:first-child {
+	.section>.row:first-child>.col-sm-6:first-child {
 		.golden-ratio:before {
 			content: "";
 			display: block;
 			padding-top: (1/(1.618*2))*100%;
 		}
-	}	
+	}
+}
+
+
+/**
+ * COLORBOX
+ * It depends on Default theme of Colorbox, and options are customized in Configure
+ * Opacity is 1, Overlay max width/height are both 100%
+*/
+#cboxWrapper {
+	@include border-radius(0);
+}
+#cboxTopLeft, #cboxTopRight, #cboxBottomLeft, #cboxBottomRight, #cboxMiddleLeft, #cboxMiddleRight {
+	width: 0;
+}
+#cboxTopLeft, #cboxTopRight, #cboxBottomLeft, #cboxBottomRight, #cboxTopCenter, #cboxBottomCenter {
+	height: 0;
+}
+#cboxLoadedContent {
+	margin: 0;
+}
+#cboxClose {
+	top: 60px;
+	right: 60px;
+	bottom: auto;
+	height: 60px;
+	width: 60px;
+	background-image: none;
+	content: '';
+	&:before, &:after {
+		position: absolute;
+		content: '';
+		display: block;
+		width: 100%;
+		height: 10px;
+		background-color: $ColorLink;
+	}
+	&:before {
+		@include rotate(45deg);
+	}
+	&:after {
+		top: 18px;
+		@include rotate(-45deg);
+	}
 }
