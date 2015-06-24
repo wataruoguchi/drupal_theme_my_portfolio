@@ -8,7 +8,7 @@ $uri = render($imageUrl);
 <article class="container-fluid">
 	<div class="row">
 		<div class="col-sm-12 image-wrapper">
-			<img src="" data-src="<?php echo $uri; ?>" alt="" class="background-image">
+			<img src="" data-src="<?php echo $uri; ?>" alt="" class="background-image image-filter">
 			<div class="box golden-ratio">
 				<div class="inner text-center">
 					<span class="centerised-block">
@@ -20,6 +20,6 @@ $uri = render($imageUrl);
 		</div>
 	</div>
 	<div class="row article-body">
-		<?php print render($content["body"]); ?>		
+		<?php print render($content["body"]); ?>
 	</div>
 </article>

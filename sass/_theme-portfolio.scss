@@ -204,8 +204,8 @@ body {
 	position: relative;
 	top: 0;
 	left: 0;
-	list-style: none;
 	margin: 0;
+	list-style: none;
 	li {
 		span {
 			position: absolute;
@@ -316,17 +316,27 @@ a {
 	text-transform: capitalize;	
 }
 .basic-info {
-	p, span {
-		margin: 1.5rem 0 2rem;
-	}
 	font-weight: 100;
 	font-size: 1.25rem;
 	letter-spacing: 1px;
 	background-color: #fff;
+	p, span {
+		margin: 1rem 0;
+	}
+	.hidden-dot {
+		//This is necessary since the slide doesn't have height of itself
+		display: inline-block;
+		color: #fff;
+	}
 }
 @media (min-width: 768px) {
-	.basic-info .name {
-		text-align: right;
+	.basic-info {
+		p, span {
+			margin: 1.5rem 0 2rem;
+		}
+		.name {
+			text-align: right;
+		}
 	}
 }
 
@@ -374,8 +384,10 @@ a {
 }
 .btn-contact {
 	width: 204px;
+	margin: 10px 0;
 }
 .social {
+	margin: 10px 0;
 	ul li {
 		padding: 0;
 		a {
@@ -469,7 +481,6 @@ a {
 	height: 60px;
 	width: 60px;
 	background-image: none;
-	content: '';
 	&:before, &:after {
 		position: absolute;
 		content: '';
@@ -479,10 +490,48 @@ a {
 		background-color: $ColorLink;
 	}
 	&:before {
+		top: 28px;
 		@include rotate(45deg);
 	}
 	&:after {
-		top: 18px;
+		top: 28px;
 		@include rotate(-45deg);
+	}
+}
+
+/** Article page
+*/
+article {
+	.image-wrapper {
+		background-color: #000;
+	}
+	.image-filter {
+		@include filter(opacity(.9));
+	}
+	.title, .caption {
+		color: #fff;
+		margin: 1.5rem;
+	}
+	.title {
+		font-weight: 900;
+		font-size: 3rem;
+	}
+	.caption {
+		font-size: 2rem;
+	}
+}
+.article-body {
+	margin-bottom: 4rem;
+	img {
+		width: 100%;
+		height: auto;
+	}
+	p {
+		padding: 4rem 25%;
+	}
+	@media (max-width:1279px) {
+		p {
+			padding: 2rem 10%;
+		}
 	}
 }
