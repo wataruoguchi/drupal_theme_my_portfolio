@@ -248,18 +248,22 @@ $ColorLinkHover: darken($ColorLink, 8);
 body {
 	font-family: $Roboto;
 }
-a {
+a, input {
 	outline: 0;
-	color: $ColorLink;
 	@include transition-delay(0s, 0s);
 	@include transition-duration(0.15s, 0.15s);
 	@include transition-timing-function(ease-in-out, ease-in-out);
 	&:hover, &:focus {
 		outline: 0;
-		color: $ColorLinkHover;
 	}
 	&:active {
 		outline: 0;
+	}
+}
+a {
+	color: $ColorLink;
+	&:hover, &:focus {
+		color: $ColorLinkHover;
 	}
 }
 
@@ -326,7 +330,7 @@ a {
 	.hidden-dot {
 		//This is necessary since the slide doesn't have height of itself
 		display: inline-block;
-		color: #fff;
+		color: rgba(#fff, 0);
 	}
 }
 @media (min-width: 768px) {
@@ -499,7 +503,8 @@ a {
 	}
 }
 
-/** Article page
+/**
+ * Article page
 */
 article {
 	.image-wrapper {
@@ -532,6 +537,83 @@ article {
 	@media (max-width:1279px) {
 		p {
 			padding: 2rem 10%;
+		}
+	}
+}
+
+/**
+ * Webform
+ * The format should be "Unformatted list"
+*/
+.node-contact {
+	form>div, header, div.field {
+		margin: 0 25%;	
+	}
+	@media (max-width:1279px) {
+		form>div, header, div.field {
+			margin: 0 10%;
+		}
+	}
+	header {
+		padding-top: 5rem;
+		h2 {
+			display: none;
+		}
+		p {
+			line-height: 1.5rem;
+		}
+	}
+	.field-items {
+		h2 {
+			text-transform: uppercase;
+		}
+		p {
+			font-weight: 300;
+		}
+	}
+}
+form {
+	.form-item {
+		width: 100%;
+		margin: 0;
+		&>label {
+			position: relative;
+			bottom: -2rem;
+			left: 1.1rem;
+			z-index: 1;
+			font-size: 0.9rem;
+			font-weight: 300;
+			margin: 0;
+			width: 50%;
+		}
+		.form-text, .form-textarea {
+			font-weight: 300;
+			line-height: 1.5;
+			width: 100%;
+		}
+		.form-text {
+			height: 5rem;
+			padding: 1rem 1rem 0.25rem;
+		}
+		.form-textarea {
+			padding: 2rem 1rem 0.25rem;
+			height: 100%;
+		}
+	}
+	.form-actions {
+		padding: 1rem 0;
+		.webform-submit {
+			width: 100%;
+			border: none;
+			padding: 1rem 0;
+			text-transform: uppercase;
+		}
+	}
+	.button-primary {
+		background-color: $ColorLink;
+		color: #fff;
+		&:hover, &:focus {
+			background-color: $ColorLinkHover;
 		}
 	}
 }
