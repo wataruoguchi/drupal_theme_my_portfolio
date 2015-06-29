@@ -13,6 +13,10 @@ body {
 	display: none;
 }
 
+@-moz-document url-prefix() {
+	fieldset { display: table-cell; }
+}
+
 
 /**
  * Components
@@ -140,8 +144,10 @@ body {
 */
 .background-image {
 	position: absolute;
-	height: 100%;
-	width: 100%;
+	min-width: 100%;
+	min-height: 100%;
+	width: auto;
+	height: auto;
 	top: 0;
 	left: 0;
 }
@@ -247,6 +253,7 @@ $ColorLink: #058b7b;
 $ColorLinkHover: darken($ColorLink, 8);
 body {
 	font-family: $Roboto;
+	line-height: 1.5rem;
 }
 a, input {
 	outline: 0;
@@ -278,6 +285,7 @@ a {
 	text-align: center;
 	text-transform: uppercase;
 	a {
+		line-height: 10rem;
 		font-family: $RobotoSlab;
 		font-size: 8rem;
 	}
@@ -359,12 +367,14 @@ a {
 }
 
 //Infomation section
+.fa {
+	line-height: 1.5;
+}
 .info-section>.row:first-child>.col-sm-6:nth-child(2) {
 	$keyColor: #fff;
 	$darkColor: darken($keyColor, 8);
 	@include background(radial-gradient(top, $keyColor, $keyColor, $keyColor, $darkColor));
 }
-.info-section {}
 .info-name, .info-email {
 	margin: 0.7rem 0;
 }
@@ -511,7 +521,7 @@ article {
 		background-color: #000;
 	}
 	.image-filter {
-		@include filter(opacity(.9));
+		@include filter(opacity(.75));
 	}
 	.title, .caption {
 		color: #fff;
@@ -531,13 +541,79 @@ article {
 		width: 100%;
 		height: auto;
 	}
-	p {
-		padding: 4rem 25%;
+	h1, h2, h3, h4, h5, p {
+		margin: 0;
+		padding: 3rem 25%;
+	}
+	p, li {
+		font-weight: 300;
+	}
+	ul {
+		margin: -2rem 0 0;
+		padding: 0 25% 3rem;
+		list-style: none;
+		li {
+			line-height: 2rem;
+			&:before {
+				content: "・ ";
+			}
+		}
+	}
+	table {
+		width: 50%;
+		margin: 0 auto;
+		p {
+			margin: inherit;
+			padding: inherit;
+		}
+	}
+	.fake-ol {
+		margin-top: -2rem;
+		padding-top: 0;
+		line-height: 2rem;
+		.colored-label {
+			padding-right: 0.5rem;
+			color: $ColorGreen;
+		}
+	}
+	.link-in-article {
+		line-height: 2rem;
+	}
+	p>u {
+		line-height: 2.5rem;
+		vertical-align: -2rem;
 	}
 	@media (max-width:1279px) {
-		p {
+		h1, h2, h3, h4, h5, p {
+			margin: 0;
 			padding: 2rem 10%;
 		}
+		ul {
+			margin: -1rem 0 0;
+			padding: 0 10% 2rem;
+		}
+		table {
+			width: 80%;
+		}
+		.fake-ol {
+			margin-top: -1rem;
+		}
+	}
+}
+
+/**
+ * History
+*/
+.history {
+	.length, .occupation {
+		font-weight: 100;
+	}
+	.length {
+		font-size: 0.9rem;
+	}
+	.no-height {
+		padding: 0;
+		border-bottom: hidden;
 	}
 }
 
@@ -558,9 +634,6 @@ article {
 		padding-top: 5rem;
 		h2 {
 			display: none;
-		}
-		p {
-			line-height: 1.5rem;
 		}
 	}
 	.field-items {
@@ -588,7 +661,6 @@ form {
 		}
 		.form-text, .form-textarea {
 			font-weight: 300;
-			line-height: 1.5;
 			width: 100%;
 		}
 		.form-text {
@@ -612,6 +684,7 @@ form {
 	.button-primary {
 		background-color: $ColorLink;
 		color: #fff;
+		margin-bottom: 6rem;
 		&:hover, &:focus {
 			background-color: $ColorLinkHover;
 		}
