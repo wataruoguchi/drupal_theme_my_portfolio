@@ -5,7 +5,7 @@
  */
 drupal_add_css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css', array('type' => 'external'));
 drupal_add_css('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array('type' => 'external'));
-drupal_add_css('http://fonts.googleapis.com/css?family=Roboto:100,300,400,900|Roboto+Slab:700', array('type' => 'external'));
+drupal_add_css('http://fonts.googleapis.com/css?family=Roboto:100,300,900|Roboto+Slab:700', array('type' => 'external'));
 
 /**
  * Add js files from CDN
