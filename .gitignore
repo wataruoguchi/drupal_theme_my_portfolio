@@ -16,3 +16,9 @@ screenshot.png
 css/
 images-source/
 *.html
+config.rb
+favicon.ico
+logo.png
+sass/*-rtl.scss
+sass/components/_misc-rtl.scss
+sass/layouts/
