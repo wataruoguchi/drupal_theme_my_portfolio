@@ -13,6 +13,7 @@
 					<span class="centerised-block">
 						<h3 class="title"><?php print $title; ?></h3>
 						<h4 class="caption"><?php print render($content["field_caption"]); ?></h4>
+						<p class="scroll-navigator"><i class="fa fa-arrow-down"></i></p>
 					</span>
 				</div>
 			</div>
