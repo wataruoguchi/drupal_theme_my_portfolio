@@ -58,7 +58,7 @@ body {
  * TOGGLE BUTTON
  * http://codyhouse.co/gem/smart-fixed-navigation/
  * http://codepen.io/designcouch/pen/Atyop
-*/	
+*/
 #nav-toggle {
 	top: 4rem;
 	right: 4rem;
@@ -168,7 +168,7 @@ body {
  * https://getpocket.com/a/read/652807135
  * http://jsfiddle.net/s3hWj/4/
  */
-.image-wrapper {	
+.image-wrapper {
 	overflow: hidden;
 }
 
@@ -201,7 +201,7 @@ body {
 		.mouseover-image-zoom {
 			@include transform(scale(1.5, 1.5));
 		}
-	}	
+	}
 }
 
 /**
@@ -336,7 +336,7 @@ a {
 .catch-phrase {
 	color: #fff;
 	font-weight: 900;
-	text-transform: capitalize;	
+	text-transform: capitalize;
 }
 .basic-info {
 	font-weight: 100;
@@ -617,7 +617,7 @@ article {
 		li {
 			line-height: 2rem;
 			&:before {
-				content: "・ ";
+				content: "\30fb  ";
 			}
 		}
 	}
@@ -687,7 +687,7 @@ article {
 */
 .node-contact {
 	form>div, header, div.field {
-		margin: 0 25%;	
+		margin: 0 25%;
 	}
 	@media (max-width:$screen-lg-min-width - 1px) {
 		form>div, header, div.field {
