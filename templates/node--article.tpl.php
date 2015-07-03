@@ -1,13 +1,12 @@
-<?php 
-//Get image url
-$node = node_load($nid);
-$imageUrl = file_create_url($node->field_image['und'][0]['uri']);
-$uri = render($imageUrl);
-?>
-
+<?php
+/**
+ * Variables used here is defined in
+ * zen_sub_preprocess_node()
+*/
+ ?>
 <article class="container-fluid">
 	<div class="row">
-		<div class="col-sm-12 image-wrapper">
+		<div class="col-xs-12 col-sm-12 image-wrapper">
 			<img src="" data-src="<?php echo $uri; ?>" alt="" class="background-image image-filter">
 			<div class="box golden-ratio">
 				<div class="inner text-center">

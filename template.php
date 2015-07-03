@@ -80,18 +80,35 @@ function zen_sub_preprocess_page(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("node" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function zen_sub_preprocess_node(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
-
-  // Optionally, run node-type-specific preprocess functions, like
-  // zen_sub_preprocess_node_page() or zen_sub_preprocess_node_story().
-  $function = __FUNCTION__ . '_' . $variables['node']->type;
-  if (function_exists($function)) {
-    $function($variables, $hook);
-  }
+function zen_sub_preprocess_node(&$vars, $hook) {
+  //Get image url
+  // http://theming.isaacsonwebdevelopment.com/pre-process-node
+  // http://benbuckman.net/articles/render-image-fields-drupal-7/
+  //https://www.drupal.org/node/1899614
+  $node = $vars['node'];
+  $vars['uri'] = _getImageUriByNode($node);
+  /**
+   * http://www.citytree.be/uncategorized-en/undefined-index-quick-fix-in-drupal7-error-reporting
+   * The code used to be..
+   * $imageUrl = file_create_url($vars['node']->field_image['und'][0]['uri']);
+   * And it shows error; Undefined index: und ...
+  */
 }
-// */
+function zen_sub_preprocess_views_view_fields(&$vars, $hook) {
+  //Get content url
+  global $base_url;
+  $nid = $vars['row']->nid;
+  $vars['path'] = drupal_get_path_alias($base_url."/node/".$nid);
+
+  //Get image url
+  $node = node_load($nid);
+  $vars['uri'] = _getImageUriByNode($node);
+}
+function _getImageUriByNode ($node) {
+  $imageObject = field_get_items('node', $node, 'field_image');
+  $imageUrl = file_create_url($imageObject[0]['uri']);
+  return render($imageUrl);
+}
 
 /**
  * Override or insert variables into the comment templates.
