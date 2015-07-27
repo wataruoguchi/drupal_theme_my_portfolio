@@ -12,6 +12,7 @@ drupal_add_css('http://fonts.googleapis.com/css?family=Roboto:100,300,900|Roboto
  * drupal_add_js('', 'external');
  */
 drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js', 'external');
+drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/holder/2.8.1/holder.min.js', 'external');
 
 /**
  * @file
