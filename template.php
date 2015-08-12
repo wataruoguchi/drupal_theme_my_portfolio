@@ -11,8 +11,8 @@ drupal_add_css('http://fonts.googleapis.com/css?family=Roboto:100,300,900|Roboto
  * Add js files from CDN
  * drupal_add_js('', 'external');
  */
-drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js', 'external');
-drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/holder/2.8.1/holder.min.js', 'external');
+drupal_add_js('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js', array('type' => 'external', 'async_js' => true));
+drupal_add_js('https://cdnjs.cloudflare.com/ajax/libs/holder/2.8.1/holder.min.js', array('type' => 'external', 'async_js' => true));
 
 /**
  * @file
@@ -87,7 +87,7 @@ function zen_sub_preprocess_node(&$vars, $hook) {
   // http://benbuckman.net/articles/render-image-fields-drupal-7/
   //https://www.drupal.org/node/1899614
   $node = $vars['node'];
-  $vars['uri'] = _getImageUriByNode($node);
+  $vars['uri'] = _zen_sub_getImageUriByNode($node);
   /**
    * http://www.citytree.be/uncategorized-en/undefined-index-quick-fix-in-drupal7-error-reporting
    * The code used to be..
@@ -103,9 +103,9 @@ function zen_sub_preprocess_views_view_fields(&$vars, $hook) {
 
   //Get image url
   $node = node_load($nid);
-  $vars['uri'] = _getImageUriByNode($node);
+  $vars['uri'] = _zen_sub_getImageUriByNode($node);
 }
-function _getImageUriByNode ($node) {
+function _zen_sub_getImageUriByNode ($node) {
   $imageObject = field_get_items('node', $node, 'field_image');
   $imageUrl = file_create_url($imageObject[0]['uri']);
   return render($imageUrl);
